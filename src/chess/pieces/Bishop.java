@@ -5,24 +5,24 @@ import boardgame.Position;
 import chess.ChessPiece;
 import chess.Color;
 
-public class Bishop extends ChessPiece{
+public class Bishop extends ChessPiece {
 
 	public Bishop(Board board, Color color) {
 		super(board, color);
 	}
 
 	@Override
-	public String toString(){
+	public String toString() {
 		return "B";
 	}
-
+	
 	@Override
 	public boolean[][] possibleMoves() {
-		boolean [][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
-
+		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
+		
 		Position p = new Position(0, 0);
 		
-		// NW
+		// nw
 		p.setValues(position.getRow() - 1, position.getColumn() - 1);
 		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
@@ -31,8 +31,8 @@ public class Bishop extends ChessPiece{
 		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
 		}
-
-		// NE
+		
+		// ne
 		p.setValues(position.getRow() - 1, position.getColumn() + 1);
 		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
@@ -41,8 +41,8 @@ public class Bishop extends ChessPiece{
 		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
 		}
-
-		// SE
+		
+		// se
 		p.setValues(position.getRow() + 1, position.getColumn() + 1);
 		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
@@ -51,8 +51,8 @@ public class Bishop extends ChessPiece{
 		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
 		}
-
-		// SW
+		
+		// sw
 		p.setValues(position.getRow() + 1, position.getColumn() - 1);
 		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
@@ -61,7 +61,7 @@ public class Bishop extends ChessPiece{
 		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
 		}
-
+		
 		return mat;
 	}
 }
